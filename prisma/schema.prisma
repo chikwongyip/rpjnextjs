@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id        String   @id @default(uuid())
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Category {
+  id        String    @id @default(uuid())
+  name      String
+  image     String?   // URL to category image
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Product {
+  id          String       @id @default(uuid())
+  name        String
+  description String
+  price       Decimal?
+  images      String       @default("[]") // JSON string of image URLs
+  specs       String       @default("{}") // JSON string of specifications
+  categoryId  String
+  category    Category     @relation(fields: [categoryId], references: [id])
+  brandId     String?
+  brand       Brand?       @relation(fields: [brandId], references: [id])
+  attachments Attachment[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model Brand {
+  id        String    @id @default(uuid())
+  name      String
+  logo      String?   // URL to logo image
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Attachment {
+  id        String   @id @default(uuid())
+  name      String
+  url       String
+  productId String?
+  product   Product? @relation(fields: [productId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CompanyInfo {
+  id        String   @id @default(uuid())
+  key       String   @unique // e.g., 'about', 'contact', 'home_hero'
+  content   String // Text or JSON content
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
