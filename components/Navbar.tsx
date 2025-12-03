@@ -1,16 +1,24 @@
 import Link from 'next/link';
 import { Menu } from 'lucide-react';
-
+import Image from 'next/image';
 export default function Navbar() {
   return (
     <nav className='bg-white border-b border-gray-200 sticky top-0 z-50'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <div className='flex justify-items-center-safe h-20'>
+        <div className='flex justify-items-center-safe h-30'>
           <div className='flex flex-row'>
             <div className='shrink-0 flex items-center'>
-              <Link href='/' className='text-2xl font-bold text-blue-600'>
-                广州瑞谱佳科技有限公司
-              </Link>
+              <div className='flex justify-center items-center'>
+                <Image
+                  src='/uploads/20231689575359321.png'
+                  alt='loading'
+                  width={120}
+                  height={120}
+                ></Image>
+                <Link href='/' className='text-2xl font-bold text-blue-600'>
+                  广州瑞谱佳科技有限公司
+                </Link>
+              </div>
             </div>
             <div className='hidden sm:ml-6 sm:flex sm:space-x-8'>
               <Link
