@@ -1,11 +1,16 @@
 import Link from 'next/link';
 import { ArrowRight, CheckCircle } from 'lucide-react';
-
+import HeroBanner from '@/components/HeroBanner';
 export default function Home() {
   return (
     <div className='bg-white'>
+      <div className='relative bg-gray-900 overflow-hidden mt-20'>
+        <HeroBanner></HeroBanner>
+
+        {/* <HeroBanner></HeroBanner> */}
+      </div>
       {/* Hero Section */}
-      <div className='relative bg-gray-900 overflow-hidden'>
+      {/* <div className='relative bg-gray-900 overflow-hidden'>
         <div className='max-w-7xl mx-auto'>
           <div className='relative z-10 pb-8 bg-gray-900 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32'>
             <main className='mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28'>
@@ -46,10 +51,10 @@ export default function Home() {
         <div className='lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2'>
           <div className='h-56 w-full bg-gray-800 sm:h-72 md:h-96 lg:w-full lg:h-full flex items-center justify-center text-gray-500'>
             {/* Placeholder for Hero Image */}
-            <span className='text-lg'>Hero Image Placeholder</span>
+      {/* <span className='text-lg'>Hero Image Placeholder</span>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Features Section */}
       <div className='py-12 bg-gray-50'>
